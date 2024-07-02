@@ -1,0 +1,39 @@
+layout {
+    
+    pane split_direction="vertical" {
+        pane
+    pane stacked=true {
+        pane
+        pane
+        pane
+    }
+    }
+
+    pane size=1 borderless=true {
+        plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+            hide_frame_for_single_pane "true"
+
+            format_left  "{mode}#[fg=#b2c1a2,bg=#191a19,bold] {session}#[bg=#191a19] {tabs}"
+            format_right "#[fg=#b2c1a2,bg=#66764e]   {command_unamer}{datetime}"
+            format_space "#[bg=#191a19]"
+
+            mode_normal          "#[bg=#525352] "
+            mode_tmux            "#[bg=#191a19] "
+            mode_default_to_mode "tmux"
+
+            tab_normal               "#[fg=#525352,bg=#b2c1a2] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_active               "#[fg=#b2c1a2,bg=#466a64,bold,italic] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_fullscreen_indicator "□ "
+            tab_sync_indicator       "  "
+            tab_floating_indicator   "󰉈 "
+
+            command_unamer_command  "uname -r"
+            command_unamer_format   "#[fg=#b2c1a2,bg=#66764e]{stdout} "
+
+            datetime          "#[fg=#b2c1a2,bg=#66764e] {format} "
+            datetime_format   "%r"
+            datetime_timezone "PST8PDT"
+        }
+    }
+}
+
